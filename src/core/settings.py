@@ -20,7 +20,7 @@ CSRF_TRUSTED_ORIGINS = getenv(
 
 
 # Application definition
-INSTALLED_APPS = [
+django_apps = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,6 +28,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+third_party_apps = [
+    'rest_framework',
+]
+local_apps = [
+    'apps.api_keys',
+    'apps.imei',
+    'apps.telegram',
+]
+INSTALLED_APPS = django_apps + third_party_apps + local_apps
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
