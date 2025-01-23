@@ -1,0 +1,6 @@
+black==24.10.0
+django-stubs==5.1.2
+flake8==7.1.1
+Flake8-pyproject==1.2.3
+isort==5.13.2
+mypy==1.14.1
