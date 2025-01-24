@@ -1,4 +1,4 @@
-from os import getenv
+from os import getenv, makedirs, path
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -124,3 +124,47 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DATETIME_FORMATTER = '%d/%b/%Y %H:%M:%S'
+LOG_FORMATTER = '[%(asctime)s] logger: %(name)s\nLevel - %(levelname)s, func - %(funcName)s\n%(message)s'
+LOG_DIR = BASE_DIR / 'logs'
+if not path.exists(LOG_DIR):
+    makedirs(LOG_DIR)
+LOG_FILE = LOG_DIR / 'web_imei.log'
+if not path.exists(LOG_FILE):
+    open(LOG_FILE, 'w').close()
+
+if not DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'main': {
+                'format': LOG_FORMATTER,
+                'datefmt': DATETIME_FORMATTER,
+            },
+        },
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'main',
+            },
+            'timed_rotating_file': {
+                'level': 'WARNING',
+                'class': 'logging.handlers.TimedRotatingFileHandler',
+                'filename': LOG_FILE,
+                'formatter': 'main',
+                'when': 'midnight',
+                'interval': 1,
+                'backupCount': 7,
+            },
+        },
+        'loggers': {
+            '': {
+                'handlers': ['console', 'timed_rotating_file'],
+                'level': 'DEBUG',
+                'propagate': False,
+            },
+        },
+    }
