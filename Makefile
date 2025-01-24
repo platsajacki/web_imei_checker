@@ -27,4 +27,4 @@ migrate:
 	python src/manage.py migrate
 
 test:
-	pytest --cov=src src/pytest_tests --blockage
+	pytest --cov=src src/tests --blockage

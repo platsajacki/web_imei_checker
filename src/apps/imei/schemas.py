@@ -5,7 +5,6 @@ from drf_yasg.utils import swagger_auto_schema
 
 from core.schemas import COMMON_PARAMETERS, RESPONSE_400, RESPONSE_403
 
-
 IMEI_RESPONSE_200 = openapi.Response(
     'Успешный ответ с информацией об устройстве',
     openapi.Schema(
@@ -39,6 +38,7 @@ IMEI_RESPONSE_200 = openapi.Response(
         },
     ),
 )
+
 
 class IMEIViewSwagger:
     """Класс для описания документации метода post в IMEIView."""

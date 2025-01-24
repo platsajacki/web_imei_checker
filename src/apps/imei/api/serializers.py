@@ -14,3 +14,4 @@ class DeviceSerializer(serializers.Serializer):
             raise serializers.ValidationError(
                 'Идентификатор должен быть IMEI (15 цифр) или серийным номером (8-14 символов: буквы и цифры).'
             )
+        return value

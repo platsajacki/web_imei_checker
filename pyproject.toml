@@ -45,20 +45,20 @@ skip = ['migrations', 'venv']
 
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
-DJANGO_SETTINGS_MODULE = "core.settings"
-norecursedirs = ["env/*", "venv/*"]
-addopts = ["-s", "-v", "-p", "no:cacheprovider"]
-testpaths = ["src/pytest_tests/"]
-python_files = ["test_*.py"]
+pythonpath = ['src']
+DJANGO_SETTINGS_MODULE = 'core.settings'
+norecursedirs = ['env/*', 'venv/*']
+addopts = ['-s', '-v', '-p', 'no:cacheprovider']
+testpaths = ['src/tests/']
+python_files = ['test_*.py']
 
 
 [tool.coverage.run]
 omit = [
-    "__init__.py",
-    "*/migrations/*",
-    "asgi.py",
-    "wsgi.py",
-    "*/pytest_tests/*",
-    "manage.py",
+    '__init__.py',
+    '*/migrations/*',
+    'asgi.py',
+    'wsgi.py',
+    '*/pytest_tests/*',
+    'manage.py',
 ]
