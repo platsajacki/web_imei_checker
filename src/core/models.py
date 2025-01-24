@@ -6,11 +6,11 @@ class TimestampedModel(models.Model):
 
     created = models.DateTimeField(
         auto_now_add=True,
-        verbose_name='Дата создания',
+        verbose_name='Created at',
     )
     updated = models.DateTimeField(
         auto_now=True,
-        verbose_name='Дата обновления',
+        verbose_name='Udated at',
     )
 
     class Meta:

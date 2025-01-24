@@ -29,10 +29,11 @@ django_apps = [
     'django.contrib.staticfiles',
 ]
 third_party_apps = [
+    'drf_yasg',
     'rest_framework',
+    'rest_framework_api_key',
 ]
 local_apps = [
-    'apps.api_keys',
     'apps.imei',
     'apps.telegram',
 ]
@@ -98,6 +99,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework_api_key.permissions.HasAPIKey',
+    ]
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {'Api-Key': {'type': 'apiKey', 'name': 'Authorization', 'in': 'header'}},
+}
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
