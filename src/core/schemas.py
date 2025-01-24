@@ -39,7 +39,7 @@ RESPONSE_400 = openapi.Response(
     openapi.Schema(
         type=openapi.TYPE_OBJECT,
         properties={
-            'telegram_id': openapi.Schema(
+            'detail': openapi.Schema(
                 type=openapi.TYPE_STRING,
                 example='This field is required.',
             )

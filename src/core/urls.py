@@ -17,11 +17,12 @@ schema_view = get_schema_view(
 
 api_v1 = [
     path('', include('apps.telegram.urls', namespace='telegram-users')),
+    path('', include('apps.imei.urls', namespace='imei')),
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(api_v1)),
+    path('api/', include(api_v1)),
 ]

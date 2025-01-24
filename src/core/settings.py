@@ -1,3 +1,4 @@
+from logging import getLogger
 from os import getenv, makedirs, path
 from pathlib import Path
 
@@ -118,6 +119,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+BASE_URL_IMEI_CHECK = 'https://api.imeicheck.net/v1/'
+IMEI_CHECK_TOKEN = getenv('IMEI_CHECK_TOKEN', '')
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
@@ -168,3 +171,5 @@ if not DEBUG:
             },
         },
     }
+
+main_loger = getLogger('')
