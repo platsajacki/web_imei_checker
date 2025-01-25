@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 
 class DeviceSerializer(serializers.Serializer):
-    device_id = serializers.CharField(min_length=8, max_length=15, required=True)
+    device_id = serializers.CharField(required=True)
 
     def validate_device_id(self, value: str) -> str:
         """Проверка на соответствие формату IMEI (15 цифр) или серийного номера (8-14 любых символов)"""
