@@ -18,6 +18,10 @@ class TelegramUser(TimestampedModel):
         verbose_name='Telegram ID',
         unique=True,
     )
+    is_allowed = models.BooleanField(
+        verbose_name='Access allowed',
+        default=True,
+    )
 
     class Meta:
         verbose_name = 'Telegram User'
