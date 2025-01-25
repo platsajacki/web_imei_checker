@@ -51,7 +51,7 @@ IMEI_RESPONSE_500 = openapi.Response(
         properties={
             'data': openapi.Schema(
                 type=openapi.TYPE_STRING,
-                example='Ошибка. Обратитесь к администратору или попробуйте позже.',
+                example='Error. Please contact the administrator or try again later.',
             ),
         },
     ),

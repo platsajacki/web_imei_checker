@@ -30,4 +30,4 @@ class TestIMEIChecker:
         response = IMEIChecker(serializer)()
         assert mock_fetch_imei_data.call_count == 1
         assert response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR
-        assert response.data == {'data': 'Ошибка. Обратитесь к администратору или попробуйте позже.'}
+        assert response.data == {'data': 'Error. Please contact the administrator or try again later.'}

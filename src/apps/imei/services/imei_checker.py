@@ -37,9 +37,9 @@ class IMEIChecker(BaseService):
         )
         data = response.json()
         if response.status_code != status.HTTP_201_CREATED or not isinstance(data, dict):
-            main_loger.error('%s вернул ответ со статусом %d\nОтвет: %s' % (url, response.status_code, data))
+            main_loger.error('%s returned a response with status %d\nResponse: %s' % (url, response.status_code, data))
             return (
-                {'data': 'Ошибка. Обратитесь к администратору или попробуйте позже.'},
+                {'data': 'Error. Please contact the administrator or try again later.'},
                 status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
         return data, status.HTTP_200_OK
