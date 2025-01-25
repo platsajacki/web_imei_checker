@@ -78,12 +78,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': getenv('ENGINE', 'django.db.backends.postgresql'),
+        'ENGINE': getenv('SQL_ENGINE', 'django.db.backends.postgresql'),
         'NAME': getenv('POSTGRES_DB', 'django'),
         'USER': getenv('POSTGRES_USER', 'django'),
         'PASSWORD': getenv('POSTGRES_PASSWORD', 'django'),
-        'HOST': getenv('DB_HOST', 'localhost'),
-        'PORT': getenv('DB_PORT', '5432'),
+        'HOST': getenv('SQL_HOST', 'localhost'),
+        'PORT': getenv('SQL_PORT', '5432'),
     }
 }
 
@@ -130,6 +130,8 @@ IMEI_CHECK_TOKEN = getenv('IMEI_CHECK_TOKEN', '')
 STATIC_URL = 'static/'
 STATIC_DIR = BASE_DIR / 'static'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [STATIC_DIR]
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
