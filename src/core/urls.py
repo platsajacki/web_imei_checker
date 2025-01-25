@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
 from rest_framework.permissions import AllowAny
 
 from drf_yasg import openapi
@@ -13,6 +14,7 @@ schema_view = get_schema_view(
     ),
     permission_classes=(AllowAny,),
     public=True,
+    url=f'{settings.BASE_URL}api',
 )
 
 api_v1 = [

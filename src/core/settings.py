@@ -19,6 +19,10 @@ CSRF_TRUSTED_ORIGINS = getenv(
     'https://127.0.0.1, https://localhost, https://www.127.0.0.1, https://www.localhost',
 ).split(', ')
 
+SITE_DOMAIN = getenv('SITE_DOMAIN', '127.0.0.1')
+protocol = 'http' if DEBUG else 'https'
+port = ':8000' if DEBUG else ''
+BASE_URL = f'{protocol}://{SITE_DOMAIN}{port}/'
 
 # Application definition
 django_apps = [
