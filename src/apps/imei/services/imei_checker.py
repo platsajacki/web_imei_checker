@@ -36,12 +36,12 @@ class IMEIChecker(BaseService):
             url, json={'deviceId': device_id, 'serviceId': 1}, headers={'Authorization': f'Bearer {IMEI_CHECK_TOKEN}'}
         )
         data = response.json()
-        if response.status_code != status.HTTP_200_OK or not isinstance(data, dict):
+        if response.status_code != status.HTTP_201_CREATED or not isinstance(data, dict):
             main_loger.error('%s вернул ответ со статусом %d\nОтвет: %s' % (url, response.status_code, data))
-            return {'error': 'Обратитесь к администратору.'}
+            return {'data': 'Ошибка. Обратитесь к администратору или попробуйте позже.'}
         return data
 
-    def act(self):
+    def act(self) -> Response:
         """
         Выполняет валидацию данных и отправляет запрос к сервису IMEI.
 

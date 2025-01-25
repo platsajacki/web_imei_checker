@@ -1,12 +1,15 @@
 import pytest
 from pytest_mock import MockerFixture, MockType
 
+import json
+
 from rest_framework.test import APIClient
 from rest_framework_api_key.models import APIKey
 
 from mimesis import Field, Fieldset, Generic, Schema
 from mimesis.builtins import RussiaSpecProvider
 from mimesis.locales import Locale
+from requests import Response
 
 
 class FixtureFactory:
@@ -44,6 +47,13 @@ def api_client() -> APIClient:
     return APIClient()
 
 
+def mock_response() -> Response:
+    response = Response()
+    response.status_code = 201
+    response._content = json.dumps({'data': {'data': 'data'}}).encode('utf-8')
+    return response
+
+
 @pytest.fixture
 def mock_fetch_imei_data(mocker: MockerFixture) -> MockType:
-    return mocker.patch('apps.imei.services.imei_checker.requests.post', data='{"data": "data"}')
+    return mocker.patch('apps.imei.services.imei_checker.requests.post', return_value=mock_response())
