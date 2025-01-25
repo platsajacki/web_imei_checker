@@ -28,3 +28,6 @@ migrate:
 
 test:
 	pytest --cov=src src/tests --blockage
+
+static:
+	python src/manage.py collectstatic --noinput

@@ -124,6 +124,8 @@ IMEI_CHECK_TOKEN = getenv('IMEI_CHECK_TOKEN', '')
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
+STATIC_DIR = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
