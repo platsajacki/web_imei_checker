@@ -29,5 +29,5 @@ class TestIMEIChecker:
         serializer = DeviceSerializer(data=data)
         response = IMEIChecker(serializer)()
         assert mock_fetch_imei_data.call_count == 1
-        assert response.status_code == status.HTTP_200_OK
+        assert response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR
         assert response.data == {'data': 'Ошибка. Обратитесь к администратору или попробуйте позже.'}

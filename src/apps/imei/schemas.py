@@ -44,6 +44,19 @@ IMEI_RESPONSE_200 = openapi.Response(
     ),
 )
 
+IMEI_RESPONSE_500 = openapi.Response(
+    description='Ошибка сервера или некорректный запрос',
+    schema=openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        properties={
+            'data': openapi.Schema(
+                type=openapi.TYPE_STRING,
+                example='Ошибка. Обратитесь к администратору или попробуйте позже.',
+            ),
+        },
+    ),
+)
+
 
 class IMEIViewSwagger:
     """Класс для описания документации метода post в IMEIView."""
@@ -68,5 +81,6 @@ class IMEIViewSwagger:
                 status.HTTP_200_OK: IMEI_RESPONSE_200,
                 status.HTTP_400_BAD_REQUEST: RESPONSE_400,
                 status.HTTP_403_FORBIDDEN: RESPONSE_403,
+                status.HTTP_500_INTERNAL_SERVER_ERROR: IMEI_RESPONSE_500,
             },
         )

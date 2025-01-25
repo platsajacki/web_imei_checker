@@ -38,8 +38,11 @@ class IMEIChecker(BaseService):
         data = response.json()
         if response.status_code != status.HTTP_201_CREATED or not isinstance(data, dict):
             main_loger.error('%s вернул ответ со статусом %d\nОтвет: %s' % (url, response.status_code, data))
-            return {'data': 'Ошибка. Обратитесь к администратору или попробуйте позже.'}
-        return data
+            return (
+                {'data': 'Ошибка. Обратитесь к администратору или попробуйте позже.'},
+                status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+        return data, status.HTTP_200_OK
 
     def act(self) -> Response:
         """
@@ -50,6 +53,6 @@ class IMEIChecker(BaseService):
         """
         if self.serializer.is_valid():
             device_id = self.serializer.validated_data['device_id']
-            device_info = self.fetch_data(device_id)
-            return Response(device_info, status=status.HTTP_200_OK)
+            device_info, status_code = self.fetch_data(device_id)
+            return Response(device_info, status=status_code)
         return Response(self.serializer.errors, status=status.HTTP_400_BAD_REQUEST)
