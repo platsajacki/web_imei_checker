@@ -12,10 +12,12 @@ class TelegramUserSerializer(serializers.ModelSerializer):
             'name',
             'surname',
             'telegram_id',
+            'is_allowed',
             'created',
             'updated',
         ]
         read_only_fields = [
+            'is_allowed',
             'created',
             'updated',
         ]

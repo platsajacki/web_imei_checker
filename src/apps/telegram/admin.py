@@ -12,6 +12,7 @@ class TelegramUserAdmin(admin.ModelAdmin):
         'name',
         'surname',
         'telegram_id',
+        'is_allowed',
         'created',
         'updated',
     )
