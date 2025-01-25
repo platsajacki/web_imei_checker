@@ -16,7 +16,7 @@ services:
     build: ./
     env_file: .env
     volumes:
-      - static:/app/staticfiles
+      - static:/static
     depends_on:
       - db
     command: gunicorn --bind 0.0.0.0:8000 core.wsgi:application
@@ -29,7 +29,7 @@ services:
     ports:
       - 8001:80
     volumes:
-      - static:/app/staticfiles
+      - static:/static
     depends_on:
       - db
       - web

@@ -14,7 +14,11 @@ docker compose up -d
 ```bash
 docker compose exec web python manage.py migrate
 ```
-3. Создайте суперпользователя, если нужно.
+3. Скопируйте статику.
+```bash
+docker compose exec web cp -r /app/staticfiles/. /static/
+```
+4. Создайте суперпользователя, если нужно.
 ```bash
 docker compose exec web python manage.py createsuperuser
 ```
