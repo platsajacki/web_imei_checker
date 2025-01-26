@@ -5,20 +5,20 @@
 Список можно дополнять через API сервиса и через админскую его часть.
 
 ## Запуск проекта
-
-1. Запустите билд и запуск контейнеров.
+1. Создаейте файл `.env` по примеру `env.example`.
+2. Запустите билд и запуск контейнеров.
 ```bash
 docker compose up -d
 ```
-2. Проведите миграции.
+3. Проведите миграции.
 ```bash
 docker compose exec web python manage.py migrate
 ```
-3. Скопируйте статику.
+4. Скопируйте статику.
 ```bash
 docker compose exec web cp -r /app/staticfiles/. /static/
 ```
-4. Создайте суперпользователя, если нужно.
+5. Создайте суперпользователя, если нужно.
 ```bash
 docker compose exec web python manage.py createsuperuser
 ```
